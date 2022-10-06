@@ -1,0 +1,176 @@
+---
+title: "Solution"
+author: "Cobey Weemes"
+date: "2022-10-05"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Team A Stats
+```{r}
+nonCornerTwoPointAttemptsA <- sum(shots_data$team == 'Team A' & (sqrt((shots_data$x)^2 + (shots_data$y)^2) < 23.75) & shots_data$y > 7.8)
+nonCornerTwoPointAttemptsA
+```
+```{r}
+cornerTwoPointAttemptsA <- sum(shots_data$team == 'Team A' & (sqrt((shots_data$x)^2 + (shots_data$y)^2) < 22) & shots_data$y <= 7.8)
+cornerTwoPointAttemptsA
+```
+```{r}
+nonCornerTwoPointMakesA <- sum(shots_data$team == 'Team A' & (sqrt((shots_data$x)^2 + (shots_data$y)^2) < 23.75)& shots_data$y > 7.8 & shots_data$fgmade == 1)
+nonCornerTwoPointMakesA
+```
+```{r}
+cornerTwoPointMakesA <- sum(shots_data$team == 'Team A' & (sqrt((shots_data$x)^2 + (shots_data$y)^2) < 22)& shots_data$y <= 7.8 & shots_data$fgmade == 1)
+cornerTwoPointMakesA
+```
+```{r}
+nonCornerThreePointAttemptsA <- sum(shots_data$team == 'Team A' & (sqrt((shots_data$x)^2 + (shots_data$y)^2) > 23.75) & shots_data$y > 7.8)
+nonCornerThreePointAttemptsA
+```
+```{r}
+cornerThreePointAttemptsA <- sum(shots_data$team == 'Team A' & (sqrt((shots_data$x)^2 + (shots_data$y)^2) > 22) & shots_data$y <= 7.8)
+cornerThreePointAttemptsA
+```
+
+```{r}
+nonCornerThreePointMakesA <- sum(shots_data$team == 'Team A' & (sqrt((shots_data$x)^2 + (shots_data$y)^2) > 23.75) & shots_data$y > 7.8 & shots_data$fgmade == 1)
+nonCornerThreePointMakesA
+```
+
+```{r}
+cornerThreePointMakesA <- sum(shots_data$team == 'Team A' & (sqrt((shots_data$x)^2 + (shots_data$y)^2) > 22)& shots_data$y <= 7.8 & shots_data$fgmade == 1)
+cornerThreePointMakesA
+```
+
+#Shot distributions for two pointers Team A
+```{r}
+totalA = nonCornerTwoPointAttemptsA + cornerTwoPointAttemptsA + nonCornerThreePointAttemptsA + cornerThreePointAttemptsA
+```
+
+#Two point zone
+```{r}
+shotDistTwoPointTeamA = ((nonCornerTwoPointAttemptsA + cornerTwoPointAttemptsA) / totalA) * 100
+shotDistTwoPointTeamA
+```
+
+#Three point non corner zone
+```{r}
+shotDistNonCornerThreePointTeamA = (nonCornerThreePointAttemptsA / totalA) * 100
+shotDistNonCornerThreePointTeamA
+```
+
+#Three point corner zone
+```{r}
+shotDistCornerThreePointTeamA = (cornerThreePointAttemptsA / totalA) * 100
+shotDistCornerThreePointTeamA
+```
+
+#Effective field goal % for every shot
+```{r}
+(((nonCornerTwoPointMakesA + cornerTwoPointMakesA + nonCornerThreePointMakesA + cornerThreePointMakesA) + ((.5)*(nonCornerThreePointMakesA + cornerThreePointMakesA))) / totalA) * 100
+```
+
+#Effective field goal % for two pointers
+```{r}
+(((nonCornerTwoPointMakesA + cornerTwoPointMakesA) + ((.5)*(0))) / totalA) * 100
+```
+
+#Effective field goal % for three pointers non corner
+```{r}
+(((nonCornerThreePointMakesA) + ((.5)*(nonCornerThreePointMakesA))) / totalA) * 100
+```
+
+#Effective field goal % for three pointers corner
+```{r}
+(((cornerThreePointMakesA) + ((.5)*(cornerThreePointMakesA))) / totalA) * 100
+```
+
+#Team B Stats
+
+```{r}
+nonCornerTwoPointAttemptsB <- sum(shots_data$team == 'Team B' & (sqrt((shots_data$x)^2 + (shots_data$y)^2) < 23.75) & shots_data$y > 7.8)
+nonCornerTwoPointAttemptsB
+```
+```{r}
+cornerTwoPointAttemptsB <- sum(shots_data$team == 'Team B' & (sqrt((shots_data$x)^2 + (shots_data$y)^2) < 22) & shots_data$y <= 7.8)
+cornerTwoPointAttemptsB
+```
+```{r}
+nonCornerTwoPointMakesB <- sum(shots_data$team == 'Team B' & (sqrt((shots_data$x)^2 + (shots_data$y)^2) < 23.75)& shots_data$y > 7.8 & shots_data$fgmade == 1)
+nonCornerTwoPointMakesB
+```
+```{r}
+cornerTwoPointMakesB <- sum(shots_data$team == 'Team B' & (sqrt((shots_data$x)^2 + (shots_data$y)^2) < 22)& shots_data$y <= 7.8 & shots_data$fgmade == 1)
+cornerTwoPointMakesB
+```
+```{r}
+nonCornerThreePointAttemptsB <- sum(shots_data$team == 'Team B' & (sqrt((shots_data$x)^2 + (shots_data$y)^2) > 23.75) & shots_data$y > 7.8)
+nonCornerThreePointAttemptsB
+```
+```{r}
+cornerThreePointAttemptsB <- sum(shots_data$team == 'Team B' & (sqrt((shots_data$x)^2 + (shots_data$y)^2) > 22) & shots_data$y <= 7.8)
+cornerThreePointAttemptsB
+```
+
+```{r}
+nonCornerThreePointMakesB <- sum(shots_data$team == 'Team B' & (sqrt((shots_data$x)^2 + (shots_data$y)^2) > 23.75) & shots_data$y > 7.8 & shots_data$fgmade == 1)
+nonCornerThreePointMakesB
+```
+
+```{r}
+cornerThreePointMakesB <- sum(shots_data$team == 'Team B' & (sqrt((shots_data$x)^2 + (shots_data$y)^2) > 22)& shots_data$y <= 7.8 & shots_data$fgmade == 1)
+cornerThreePointMakesB
+```
+
+#Shot distribution for two pointers Team B
+```{r}
+totalB = nonCornerTwoPointAttemptsB + cornerTwoPointAttemptsB + nonCornerThreePointAttemptsB + cornerThreePointAttemptsB
+totalB
+```
+#Two point zone
+```{r}
+shotDistTwoPointTeamB = ((nonCornerTwoPointAttemptsB + cornerTwoPointAttemptsB) / totalB) * 100
+shotDistTwoPointTeamB
+```
+
+#Three point non corner zone
+```{r}
+shotDistNonCornerThreePointTeamB = (nonCornerThreePointAttemptsB / totalB) * 100
+shotDistNonCornerThreePointTeamB
+```
+
+#Three point corner zone
+```{r}
+shotDistCornerThreePointTeamB = (cornerThreePointAttemptsB / totalB) * 100
+shotDistCornerThreePointTeamB
+```
+
+#Effective field goal % for every shot
+```{r}
+(((nonCornerTwoPointMakesB + cornerTwoPointMakesB + nonCornerThreePointMakesB + cornerThreePointMakesB) + ((.5)*(nonCornerThreePointMakesB + cornerThreePointMakesB))) / totalB) * 100
+```
+
+#Effective field goal % for two pointers
+```{r}
+(((nonCornerTwoPointMakesB + cornerTwoPointMakesB) + ((.5)*(0))) / totalB) * 100
+```
+
+#Effective field goal % for three pointers non corner
+```{r}
+(((nonCornerThreePointMakesB) + ((.5)*(nonCornerThreePointMakesB))) / totalB) * 100
+```
+
+#Effective field goal % for three pointers corner
+```{r}
+(((cornerThreePointMakesB) + ((.5)*(cornerThreePointMakesB))) / totalB) * 100
+```
+
+
+
+```{r}
+
+```
+
